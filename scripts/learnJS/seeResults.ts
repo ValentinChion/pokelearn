@@ -24,6 +24,8 @@ expectedOutputErrorLog.config({
     title: "Valeur attendue",
 });
 
+const validateOutputLog = new BeautifyConsole.default();
+
 async function learn() {
     const learnText = `Bienvenue dans le programme d'apprentissage Javascript de Pokélearn !
 Pour des raisons de praticité, cette première étape ne concernera pas les pokémons...
@@ -91,10 +93,6 @@ const mainMenu = async () => {
 const testFunctionMenu = () => {
     let learn;
     try {
-        Object.keys(require.cache).forEach(function (key) {
-            delete require.cache[key];
-        });
-        console.log("require.cache", require.cache);
         learn = require("./learn");
     } catch (error) {
         term.red(
@@ -111,6 +109,7 @@ const testFunctionMenu = () => {
             fn: (...args: any[]) => any;
             inputs: any[];
             outputs: any[];
+            options: { [key: string]: string | boolean };
         },
     ][] = Object.entries(learn);
 
@@ -147,35 +146,99 @@ const testFunction = ({
     fn,
     inputs,
     outputs,
+    options = {},
+    withConsole = true,
 }: {
     fn: (...args: any[]) => any;
     inputs: any[];
     outputs: any[];
+    options: { [key: string]: string | boolean };
+    withConsole?: boolean;
 }) => {
     try {
         let isCorrect = true;
         outputs.some((output, index) => {
-            const userOutput = fn(inputs[index]);
+            let userOutput = fn(inputs[index]);
+            if (typeof userOutput === "string" && options.trim) {
+                userOutput = userOutput.trim();
+            }
             if (userOutput !== output) {
                 isCorrect = false;
-                inputErrorLog.error(inputs[index]);
-                userOutputErrorLog.error(userOutput);
-                expectedOutputErrorLog.error(output);
+                if (withConsole) {
+                    inputErrorLog.error(inputs[index]);
+                    userOutputErrorLog.error(userOutput);
+                    expectedOutputErrorLog.error(output);
+                }
                 return true;
             }
         });
 
         if (isCorrect) {
-            term.green("La fonction est correcte !");
+            if (withConsole) {
+                term.green("La fonction est correcte !");
+            }
+            return true;
         }
+        return false;
     } catch (error) {
-        console.log(error);
         term.red("Erreur lors de l'exécution de la fonction");
+        console.log(error);
+        return false;
     }
 };
 
 const validateAnswers = () => {
-    term("validate");
+    let learn;
+    try {
+        learn = require("./learn");
+    } catch (error) {
+        term.red(
+            "! Une des fonctions n'est pas définie ou une erreur de syntaxe a été détectée ! Détails :\n",
+        );
+        console.log(error);
+        process.exit();
+        return;
+    }
+
+    const allFunctions: [
+        string,
+        {
+            fn: (...args: any[]) => any;
+            inputs: any[];
+            outputs: any[];
+            options: { [key: string]: string | boolean };
+        },
+    ][] = Object.entries(learn);
+
+    let endedExercices = true;
+    allFunctions.map(([key, { fn, inputs, outputs, options }]) => {
+        const isFnValidated = testFunction({
+            fn,
+            inputs,
+            outputs,
+            options,
+            withConsole: false,
+        });
+
+        validateOutputLog.config({
+            title: key,
+        });
+        if (isFnValidated) {
+            validateOutputLog.log("Fonction correcte !");
+        } else {
+            endedExercices = false;
+            validateOutputLog.error("Erreur sur la fonction");
+        }
+    });
+
+    if (!endedExercices) {
+        showExitMessage();
+    } else {
+        term.white(
+            "Vous avez finis ce module ! Toutes vos fonctions sont corrects. Présentez votre code à un coach pour discuter de votre code.\n",
+        );
+        process.exit();
+    }
 };
 
 const showExitMessage = () => {

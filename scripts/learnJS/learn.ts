@@ -14,7 +14,11 @@ const data = require("./data");
 //    5 x 9 = 45
 //    5 x 10 = 50
 const showMultiplicationTable = (number: number) => {
-    console.log("aga");
+    let result = ``;
+    for (let i = 1; i <= 10; i++) {
+        result = `${result}${number} x ${i} = ${number * i}\n`;
+    }
+    return result;
 };
 
 // 2. Ecrire une fonction qui prend en entrée une chaîne de caractère et qui la retourne en snake_case.
@@ -44,6 +48,9 @@ module.exports = {
         fn: showMultiplicationTable,
         inputs: data.showMultiplicationTableInputs,
         outputs: data.showMultiplicationTableOutputs,
+        options: {
+            trim: true,
+        },
     },
     toSnakeCase: {
         fn: toSnakeCase,
