@@ -43,6 +43,19 @@ const combine = (
     objB: { [key: string]: number },
 ) => {};
 
+// 5. Ecrire une fonction qui vérifie si un mot de passe est valide.
+//      Entre 8 - 20 caractères
+//      Contient uniquement les caractères suivants (et au moins un caractère de chaque catégorie) :
+//      majuscules,
+//      minuscules,
+//      chiffres,
+//      caractères spéciaux : !@#$%^&*?
+//    Retourne "Valide" si le mot de passe est valide, "Invalide" sinon.
+//    Exemple :
+//    isStrongPassword("Password123!")
+//    "Valide"
+const isStrongPassword = (password: string) => {};
+
 module.exports = {
     showMultiplicationTable: {
         fn: showMultiplicationTable,
@@ -66,5 +79,10 @@ module.exports = {
         fn: combine,
         inputs: data.combineInputs,
         outputs: data.combineOutputs,
+    },
+    isStrongPassword: {
+        fn: isStrongPassword,
+        inputs: data.isStrongPasswordInputs,
+        outputs: data.isStrongPasswordOutputs,
     },
 };

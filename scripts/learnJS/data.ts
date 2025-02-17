@@ -116,6 +116,26 @@ const combineOutputs = combineInputs.map(([objA, objB]) =>
     getCombineOuputs(objA, objB),
 );
 
+const isStrongPasswordInputs = [
+    "Psw1!",
+    "Password123!",
+    "password12345",
+    "Passwordtreslong",
+    "anotherTypeWorking1#",
+    "pO12#^!%8$",
+    "looooooooooooooooooooooNg12#!",
+];
+
+const isStrongPasswordOutputs = [
+    "Invalide",
+    "Valide",
+    "Invalide",
+    "Invalide",
+    "Valide",
+    "Valide",
+    "Invalide",
+];
+
 module.exports = {
     showMultiplicationTableInputs,
     showMultiplicationTableOutputs,
@@ -125,4 +145,6 @@ module.exports = {
     sumPairsAndOddsOutputs,
     combineInputs,
     combineOutputs,
+    isStrongPasswordInputs,
+    isStrongPasswordOutputs,
 };
