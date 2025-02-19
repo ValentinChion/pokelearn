@@ -39,3 +39,5 @@ next-env.d.ts
 
 # Remove prettier for learning purposes
 .prettierrc.json
+
+/src/app/test/*
