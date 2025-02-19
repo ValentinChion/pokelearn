@@ -157,18 +157,41 @@ const testFunction = ({
 }) => {
     try {
         let isCorrect = true;
+
         outputs.some((output, index) => {
-            let userOutput = fn(inputs[index]);
-            if (typeof userOutput === "string" && options.trim) {
-                userOutput = userOutput.trim();
+            let userOutput: any;
+
+            if (options.shouldSpread) {
+                userOutput = fn(...inputs[index]);
+            } else {
+                userOutput = fn(inputs[index]);
             }
-            if (userOutput !== output) {
+
+            const setError = () => {
                 isCorrect = false;
                 if (withConsole) {
                     inputErrorLog.error(inputs[index]);
                     userOutputErrorLog.error(userOutput);
                     expectedOutputErrorLog.error(output);
                 }
+
+                return true;
+            };
+
+            if (typeof userOutput === "string" && options.trim) {
+                userOutput = userOutput.trim();
+                setError();
+            }
+            if (Array.isArray(inputs[index])) {
+                const hasError = inputs[index].some((input, index) => {
+                    if (input !== userOutput[index]) {
+                        setError();
+                        return true;
+                    }
+                });
+                return hasError;
+            } else if (userOutput !== output) {
+                setError();
                 return true;
             }
         });
@@ -245,7 +268,7 @@ const showExitMessage = () => {
     term.white(
         "\nPour relancer le programme sans attendre, utilise la commande : \n",
     );
-    term.cyan("npm run learn -s\n\n");
+    term.cyan("npm run learn -- -s\n\n");
     process.exit();
 };
 

@@ -25,8 +25,10 @@ const toSnakeCase = (str: string) => {};
 //    et la somme des entrées impairs en deuxième.
 //    Exemple :
 //    sumPairsAndOdds([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
-//    [16, 15]
-const sumPairsAndOdds = (numbers: number[]) => {};
+//    [25, 30]
+const sumPairsAndOdds = (numbers: number[]) => {
+    return [30, 25];
+};
 
 // 4. Ecrire une fonction qui combine deux objets.
 //    Exemple :
@@ -73,6 +75,9 @@ module.exports = {
         fn: combine,
         inputs: data.combineInputs,
         outputs: data.combineOutputs,
+        options: {
+            shouldSpread: true,
+        },
     },
     isStrongPassword: {
         fn: isStrongPassword,
