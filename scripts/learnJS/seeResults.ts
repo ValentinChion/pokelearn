@@ -4,6 +4,7 @@ const termKit = require("terminal-kit");
 const BeautifyConsole = require("beautify-console-log");
 const args = require("args");
 const term = termKit.terminal;
+const _ = require("lodash");
 
 args.option("skip", "Skip the starting text");
 
@@ -170,7 +171,11 @@ const testFunction = ({
             const setError = () => {
                 isCorrect = false;
                 if (withConsole) {
-                    inputErrorLog.error(inputs[index]);
+                    if (options.shouldSpread) {
+                        inputErrorLog.error(...inputs[index]);
+                    } else {
+                        inputErrorLog.error(inputs[index]);
+                    }
                     userOutputErrorLog.error(userOutput);
                     expectedOutputErrorLog.error(output);
                 }
@@ -182,14 +187,29 @@ const testFunction = ({
                 userOutput = userOutput.trim();
                 setError();
             }
-            if (Array.isArray(inputs[index])) {
-                const hasError = inputs[index].some((input, index) => {
-                    if (input !== userOutput[index]) {
-                        setError();
-                        return true;
-                    }
-                });
+            if (Array.isArray(output) && !options.shouldSpread) {
+                if (
+                    !Array.isArray(userOutput) ||
+                    userOutput.length !== output.length
+                ) {
+                    setError();
+                    return true;
+                }
+
+                const hasError = output.some(
+                    (outputInArray: any, indexInArray: number) => {
+                        if (outputInArray !== userOutput[indexInArray]) {
+                            setError();
+                            return true;
+                        }
+                    },
+                );
                 return hasError;
+            } else if (typeof output === "object") {
+                if (!_.isEqual(userOutput, output)) {
+                    setError();
+                    return true;
+                }
             } else if (userOutput !== output) {
                 setError();
                 return true;

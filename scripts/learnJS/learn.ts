@@ -26,9 +26,7 @@ const toSnakeCase = (str: string) => {};
 //    Exemple :
 //    sumPairsAndOdds([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
 //    [25, 30]
-const sumPairsAndOdds = (numbers: number[]) => {
-    return [30, 25];
-};
+const sumPairsAndOdds = (numbers: number[]) => {};
 
 // 4. Ecrire une fonction qui combine deux objets.
 //    Exemple :
