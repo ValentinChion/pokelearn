@@ -185,7 +185,6 @@ const testFunction = ({
 
             if (typeof userOutput === "string" && options.trim) {
                 userOutput = userOutput.trim();
-                setError();
             }
             if (Array.isArray(output) && !options.shouldSpread) {
                 if (
