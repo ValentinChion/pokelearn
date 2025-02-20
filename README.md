@@ -43,7 +43,8 @@ pnpm run dev
 Lancer le serveur :
 
 ```bash
-make docker-setup
+cd pokeapi-master/
+sudo make docker-setup
 ```
 
 Si vous n'avez pas make sur votre machine, vous pouvez utiliser les commandes suivantes :
