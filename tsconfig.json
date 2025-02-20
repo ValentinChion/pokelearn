@@ -27,7 +27,8 @@
         "**/*.tsx",
         ".next/types/**/*.ts",
         "react-app/src/test/pokemon.js",
-        "react-app/src/test/page.js"
+        "react-app/src/test/page.js",
+        "react-app/src/test/pokedex.js"
     ],
     "exclude": ["node_modules"]
 }
