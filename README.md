@@ -6,12 +6,12 @@ Pokelearn est un projet d'apprentissage pour apprendre React, Next.js et les lib
 
 ### Prérequis
 
-- Node.js 18.17.0
-- Npm 10.1.0
+-   Node.js 18.17.0
+-   Npm 10.1.0
 
 Pour télécharger Node.js & votre package manager préféré, nous allons utiliser nvm.
 Rendez-vous ici : https://github.com/nvm-sh/nvm?tab=readme-ov-file#installing-and-updating pour l'installer.
-Une fois installé, il faut *relancer* votre terminal. Si tout s'est bien passé, vous devriez pouvoir lancer la commande `nvm -v`.
+Une fois installé, il faut _relancer_ votre terminal. Si tout s'est bien passé, vous devriez pouvoir lancer la commande `nvm -v`.
 
 ### Script d'installation
 
@@ -23,8 +23,33 @@ nvm use
 npm i
 ```
 
-### Lancer le serveur
+### Lancer le serveur React
 
 ```bash
-npm run dev
+cd react-app
+pnpm install
+pnpm start
+```
+
+### Lancer le serveur Next.js
+
+```bash
+pnpm install
+pnpm run dev
+```
+
+### Installer l'API
+
+Start everything by
+
+```bash
+make docker-setup
+```
+
+If you don't have make on your machine you can use the following commands
+
+```bash
+docker compose up -d
+docker compose exec -T app python manage.py migrate --settings=config.docker-compose
+docker compose exec -T app sh -c 'echo "from data.v2.build import build_all; build_all()" | python manage.py shell --settings=config.docker-compose'
 ```
