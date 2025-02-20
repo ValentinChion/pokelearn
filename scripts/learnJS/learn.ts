@@ -13,7 +13,9 @@ const data = require("./data");
 //    5 x 8 = 40
 //    5 x 9 = 45
 //    5 x 10 = 50
-const showMultiplicationTable = (number: number) => {};
+const showMultiplicationTable = (number: number) => {
+    console.log("Hello World");
+};
 
 // 2. Ecrire une fonction qui prend en entrée une chaîne de caractère et qui la retourne en snake_case.
 //    Exemple :
