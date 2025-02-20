@@ -1,0 +1,14 @@
+@font-face {
+    font-family: "PokemonEmerald";
+    src: local("PokemonEmerald"),
+        url(./fonts/pokemon-emerald.ttf) format("truetype");
+}
+
+body {
+    font-family: "PokemonEmerald";
+}
+
+.intro {
+    font-size: 1.5rem;
+    line-height: 1.5;
+}
