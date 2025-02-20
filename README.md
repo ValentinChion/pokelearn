@@ -40,13 +40,13 @@ pnpm run dev
 
 ### Installer l'API
 
-Start everything by
+Lancer le serveur :
 
 ```bash
 make docker-setup
 ```
 
-If you don't have make on your machine you can use the following commands
+Si vous n'avez pas make sur votre machine, vous pouvez utiliser les commandes suivantes :
 
 ```bash
 docker compose up -d
