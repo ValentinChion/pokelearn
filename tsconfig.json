@@ -21,6 +21,13 @@
             "@/*": ["./src/*"]
         }
     },
-    "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+    "include": [
+        "next-env.d.ts",
+        "**/*.ts",
+        "**/*.tsx",
+        ".next/types/**/*.ts",
+        "react-app/src/test/pokemon.js",
+        "react-app/src/test/page.js"
+    ],
     "exclude": ["node_modules"]
 }

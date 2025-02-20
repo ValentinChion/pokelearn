@@ -41,3 +41,6 @@ next-env.d.ts
 .prettierrc.json
 
 /src/app/test/*
+/react-app/src/test/*
+
+react-app/pnpm-lock.yaml
