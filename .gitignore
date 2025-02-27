@@ -40,8 +40,7 @@ next-env.d.ts
 # Remove prettier for learning purposes
 .prettierrc.json
 
-/src/app/test/*
-/react-app/src/test/*
+**/test/*
 
 /react-app/pnpm-lock.yaml
 pnpm-lock.yaml
@@ -49,3 +48,5 @@ pnpm-lock.yaml
 node_modules/
 dist/
 *.env
+
+.vscode/*

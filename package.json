@@ -10,7 +10,8 @@
         "learn": "npx ts-node scripts/learnJS/seeResults.ts",
         "prisma-queries": "ts-node --transpile-only --script-mode ./scripts/prisma/queries.ts",
         "prisma-caching": "ts-node --transpile-only --script-mode ./scripts/prisma/caching.ts",
-        "prisma-realtime": "ts-node --transpile-only --script-mode ./scripts/prisma/realtime.ts"
+        "prisma-realtime": "ts-node --transpile-only --script-mode ./scripts/prisma/realtime.ts",
+        "create-team": "ts-node --transpile-only --script-mode ./scripts/prisma/team.ts"
     },
     "dependencies": {
         "beautify-console-log": "^1.3.16",
