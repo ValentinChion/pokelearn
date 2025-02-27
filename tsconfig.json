@@ -28,7 +28,17 @@
         ".next/types/**/*.ts",
         "react-app/src/test/pokemon.js",
         "react-app/src/test/page.js",
-        "react-app/src/test/pokedex.js"
+        "react-app/src/test/pokedex.js",
+        "scripts/prisma/realtime.ts",
+        "scripts/prisma/queries.ts",
+        "scripts/prisma/caching.ts"
     ],
-    "exclude": ["node_modules"]
+    "exclude": ["node_modules"],
+    "ts-node": {
+        "esm": true,
+        "compilerOptions": {
+            "module": "commonjs",
+            "moduleResolution": "node"
+        }
+    }
 }

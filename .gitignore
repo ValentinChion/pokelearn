@@ -43,4 +43,9 @@ next-env.d.ts
 /src/app/test/*
 /react-app/src/test/*
 
-react-app/pnpm-lock.yaml
+/react-app/pnpm-lock.yaml
+pnpm-lock.yaml
+
+node_modules/
+dist/
+*.env
