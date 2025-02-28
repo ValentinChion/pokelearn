@@ -1,4 +1,4 @@
-import { createTeam } from "../../src/app/actions/team";
+import { createTeam } from "../../src/app/actions/team.ts";
 import { PrismaClient } from "@prisma/client";
 import { withAccelerate } from "@prisma/extension-accelerate";
 import * as beautify from "beautify-json";
