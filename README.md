@@ -38,19 +38,11 @@ pnpm install
 pnpm run dev
 ```
 
-### Installer l'API
-
-Lancer le serveur :
+### Installer la BDD de test
 
 ```bash
-cd pokeapi-master/
-sudo make docker-setup
-```
-
-Si vous n'avez pas make sur votre machine, vous pouvez utiliser les commandes suivantes :
-
-```bash
-docker compose up -d
-docker compose exec -T app python manage.py migrate --settings=config.docker-compose
-docker compose exec -T app sh -c 'echo "from data.v2.build import build_all; build_all()" | python manage.py shell --settings=config.docker-compose'
+sudo -u postgres psql;
+CREATE USER testuser WITH PASSWORD 'qsd';
+CREATE DATABASE testdb;
+GRANT ALL PRIVILEGES ON DATABASE testdb TO testuser;
 ```
