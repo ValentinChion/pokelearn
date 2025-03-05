@@ -40,9 +40,18 @@ pnpm run dev
 
 ### Installer la BDD de test
 
+Installe postgresql sur ton PC :
+
+-   [Windows](https://medium.com/@itayperry91/get-started-with-postgresql-on-windows-a-juniors-life-4adfa6dd10e)
+-   [Ubuntu](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-ubuntu-22-04)
+
+Une fois installé, ouvre un terminal et lance les commandes suivantes :
+
 ```bash
 sudo -u postgres psql;
 CREATE USER testuser WITH PASSWORD 'qsd';
 CREATE DATABASE testdb;
 GRANT ALL PRIVILEGES ON DATABASE testdb TO testuser;
 ```
+
+Renomme le fichier `env.test.exemple` par `.env.test`
