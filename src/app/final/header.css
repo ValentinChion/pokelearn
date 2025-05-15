@@ -1,0 +1,24 @@
+.header {
+    width: 100%;
+    border-bottom: 4px solid #d3d3d3;
+
+    padding: 0.5rem 0.5rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.page {
+    margin-top: 75px;
+}
+
+.headerTitle {
+    margin-left: 0.5rem;
+    font-size: 2rem;
+}
+
+.headerClick {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}

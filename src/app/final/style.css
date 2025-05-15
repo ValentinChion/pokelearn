@@ -1,0 +1,36 @@
+.pokedex {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    justify-items: center;
+    align-items: center;
+}
+
+.app {
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+.pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0px;
+    font-weight: 800;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+input {
+    margin: 10px 0px;
+    font-weight: 800;
+    font-size: 16px;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 6px;
+}

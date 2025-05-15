@@ -51,7 +51,7 @@ Une fois installé, ouvre un terminal et lance les commandes suivantes :
 sudo -u postgres psql;
 CREATE USER testuser WITH PASSWORD 'qsd';
 CREATE DATABASE testdb;
-GRANT ALL PRIVILEGES ON DATABASE testdb TO testuser;
+ALTER DATABASE testdb OWNER TO testuser;
 ```
 
 Renomme le fichier `env.test.exemple` par `.env.test`

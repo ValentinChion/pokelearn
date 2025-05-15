@@ -1,7 +1,5 @@
 "use server";
 
-import { prisma } from "../../lib/prisma.ts";
-
 // Ici tu sais à quoi va ressembler tes paramètres d'entrée !
 interface PokemonInTeam {
     entry: number;
